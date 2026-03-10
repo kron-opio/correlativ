@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CORRELATIV :: Seguimiento Académico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="scanlines"></div>
+
+  <div class="page-wrapper">
+
+    <header class="site-header">
+      <div class="pixel-marquee">
+        <span>✦ CORRELATIV ✦ SEGUIMIENTO DE CORRELATIVIDADES ✦ UNA ✦ CRÍTICA DE ARTES ✦ CORRELATIV ✦</span>
+      </div>
+      <div class="header-inner">
+        <h1 class="site-title">CORRELATIV</h1>
+        <p class="site-subtitle">&gt;&gt; sistema de seguimiento de correlatividades &lt;&lt;</p>
+      </div>
+    </header>
+
+    <main class="main-content">
+
+      <div class="pixel-box landing-box">
+        <div class="box-title">
+          <span class="blink">▶</span>&nbsp;INGRESÁ TU CÓDIGO DE ESTUDIANTE
+        </div>
+        <div class="box-content">
+          <p class="instruction-text">
+            Tu código único te fue enviado por tu docente o coordinadora.<br>
+            Pegalo acá abajo para ver tu seguimiento de correlatividades.
+          </p>
+          <form id="landing-form" class="pixel-form">
+            <div class="form-row">
+              <label for="student-id">CÓDIGO:</label>
+              <input
+                type="text"
+                id="student-id"
+                class="pixel-input"
+                placeholder="pegá tu código acá..."
+                autocomplete="off"
+                spellcheck="false"
+              >
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="pixel-btn btn-primary" id="submit-btn">
+                ▶&nbsp;ACCEDER
+              </button>
+            </div>
+          </form>
+          <div id="error-msg" class="error-msg hidden">
+            ✖&nbsp;Código no encontrado. Revisá que esté completo y bien copiado.
+          </div>
+        </div>
+      </div>
+
+      <div class="pixel-box info-box">
+        <div class="box-title">¿QUÉ ES ESTO?</div>
+        <div class="box-content">
+          <p class="info-line">▸ Visualizá el mapa de correlatividades de tu carrera</p>
+          <p class="info-line">▸ Marcá las materias que cursaste y aprobaste</p>
+          <p class="info-line">▸ Sabé en tiempo real qué podés cursar ahora</p>
+          <p class="info-line">▸ Vé exactamente qué te falta para desbloquear cada materia</p>
+          <p class="info-line">▸ Tu progreso se guarda automáticamente</p>
+        </div>
+      </div>
+
+    </main>
+
+    <footer class="site-footer">
+      <p>* Este sistema no reemplaza la información oficial de tu institución *</p>
+    </footer>
+
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>

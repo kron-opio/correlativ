@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CORRELATIV :: Seguimiento</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="scanlines"></div>
+
+  <!-- HEADER FIJO -->
+  <header class="tracker-header">
+    <div class="header-top-row">
+      <span class="site-name-small">CORRELATIV</span>
+      <button id="back-btn" class="pixel-btn btn-small btn-ghost">← SALIR</button>
+    </div>
+    <div class="student-info-row">
+      <div id="student-name" class="student-name">▓▓▓▓▓▓▓▓▓▓</div>
+      <div id="career-name" class="career-name">&nbsp;</div>
+    </div>
+    <div class="progress-section">
+      <div class="progress-stats-row" id="progress-stats">
+        <span class="stat"><span class="stat-num" id="count-aprobadas">0</span>&nbsp;aprobadas</span>
+        <span class="stat-sep">|</span>
+        <span class="stat"><span class="stat-num" id="count-cursadas">0</span>&nbsp;en curso</span>
+        <span class="stat-sep">|</span>
+        <span class="stat"><span class="stat-num" id="count-disponibles">0</span>&nbsp;disponibles</span>
+        <span class="stat-sep">|</span>
+        <span class="stat"><span class="stat-num" id="count-total">0</span>&nbsp;total</span>
+      </div>
+      <div class="progress-bar-label">PROGRESO:&nbsp;<span id="progress-pct">0%</span></div>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progress-bar" style="width:0%"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="tracker-main" id="tracker-main">
+    <div class="loading-screen" id="loading-screen">
+      <span class="blink">▓▓▓</span>&nbsp;CARGANDO CORRELATIVIDADES&nbsp;<span class="blink">▓▓▓</span>
+    </div>
+  </main>
+
+  <!-- LEYENDA FIJA ABAJO -->
+  <div class="legend-bar">
+    <span class="legend-item legend-aprobada">■&nbsp;APROBADA</span>
+    <span class="legend-item legend-cursada">■&nbsp;CURSADA</span>
+    <span class="legend-item legend-disponible">■&nbsp;DISPONIBLE</span>
+    <span class="legend-item legend-bloqueada">■&nbsp;BLOQUEADA</span>
+    <span class="legend-sep">|</span>
+    <span class="legend-hint">CLICKEÁ cualquier materia para ver detalles</span>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal-overlay hidden" id="modal-overlay">
+    <div class="pixel-box modal-box" id="modal-box">
+      <div class="box-title" id="modal-title">MATERIA</div>
+      <div class="box-content" id="modal-content">
+        <!-- Relleno por JS -->
+      </div>
+      <div class="modal-footer">
+        <button class="pixel-btn btn-secondary btn-small" id="modal-close">✖&nbsp;CERRAR</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST DE GUARDADO -->
+  <div class="save-toast hidden" id="save-toast">✔&nbsp;GUARDADO</div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/correlatividades.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/tracker.js"></script>
+</body>
+</html>
