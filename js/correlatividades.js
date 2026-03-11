@@ -42,6 +42,9 @@ function computeSubjectStatus(subjectId, progress, allSubjects, semesterThreshol
   if (userState === 'cursada') {
     return { status: 'cursada', missingCursada: [], missingAprobada: [], missingThreshold: null };
   }
+  if (userState === 'cursando') {
+    return { status: 'cursando', missingCursada: [], missingAprobada: [], missingThreshold: null };
+  }
 
   // Conteos globales
   const totalAprobadas = Object.values(progress).filter(v => v === 'aprobada').length;
