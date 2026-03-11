@@ -12,7 +12,8 @@
 
   const STATUS_LABEL = {
     aprobada:   '✓ APROBADA',
-    cursada:    '▶ CURSADA',
+    cursada:    '▶ CURSADA APROBADA',
+    cursando:   '◉ CURSANDO',
     disponible: '◆ DISPONIBLE',
     bloqueada:  '✖ BLOQUEADA',
   };
@@ -188,9 +189,10 @@
     if (isAccessible) {
       const cur = progress[subject.id] || null;
       html += '<div class="status-btns">';
-      html += statusBtn('aprobada', '✓ APROBADA', cur, subject.id);
-      html += statusBtn('cursada',  '▶ CURSADA',  cur, subject.id);
-      html += statusBtn(null,       '✖ NINGUNA',  cur, subject.id);
+      html += statusBtn('aprobada', '✓ APROBADA',         cur, subject.id);
+      html += statusBtn('cursada',  '▶ CURSADA APROBADA', cur, subject.id);
+      html += statusBtn('cursando', '◉ CURSANDO',         cur, subject.id);
+      html += statusBtn(null,       '✖ NINGUNA',          cur, subject.id);
       html += '</div>';
     } else {
       html += '<div class="blocked-notice">✖ Esta materia no está disponible todavía. '
@@ -311,6 +313,7 @@
     const stats      = getProgressStats(progress, careerData.subjects, thresholds);
 
     document.getElementById('count-aprobadas').textContent  = stats.aprobadas;
+    document.getElementById('count-cursando').textContent   = stats.cursando;
     document.getElementById('count-cursadas').textContent   = stats.cursadas;
     document.getElementById('count-disponibles').textContent= stats.disponibles;
     document.getElementById('count-total').textContent      = stats.total;
@@ -338,7 +341,7 @@
 
   // ── Helpers ────────────────────────────────────────
   function ordinal(n) {
-    return ['PRIMERO','SEGUNDO','TERCERO','CUARTO','QUINTO','SEXTO'][n - 1] || (n + '°');
+    return ['PRIMER','SEGUNDO','TERCER','CUARTO','QUINTO','SEXTO'][n - 1] || (n + '°');
   }
 
   function escHtml(str) {

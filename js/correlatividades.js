@@ -108,6 +108,7 @@ function getProgressStats(progress, allSubjects, semesterThresholds) {
   const total     = allSubjects.length;
   const aprobadas = Object.values(progress).filter(v => v === 'aprobada').length;
   const cursadas  = Object.values(progress).filter(v => v === 'cursada').length;
+  const cursando  = Object.values(progress).filter(v => v === 'cursando').length;
 
   const statuses    = computeAllStatuses(progress, allSubjects, semesterThresholds);
   const disponibles = Object.values(statuses).filter(s => s.status === 'disponible').length;
@@ -116,6 +117,7 @@ function getProgressStats(progress, allSubjects, semesterThresholds) {
     total,
     aprobadas,
     cursadas,
+    cursando,
     disponibles,
     pct: total > 0 ? Math.round((aprobadas / total) * 100) : 0
   };

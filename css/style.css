@@ -460,6 +460,12 @@ body {
   color: var(--col-pink);
   animation: pulse-glow 2.2s ease-in-out infinite;
 }
+.subject-card.status-cursando {
+  background: #1A0030;
+  border-color: var(--col-white);
+  color: var(--col-white);
+  box-shadow: var(--px) var(--px) 0 rgba(0,0,0,0.3);
+}
 .subject-card.status-bloqueada {
   background: var(--s-bloqueada-bg);
   border-color: var(--s-bloqueada-col);
@@ -489,6 +495,7 @@ body {
 }
 .status-aprobada  .subject-badge { background: var(--s-aprobada-col);  color: var(--bg); }
 .status-cursada   .subject-badge { background: var(--s-cursada-col);   color: var(--bg); }
+.status-cursando  .subject-badge { background: var(--col-white);       color: #1A0030; }
 .status-disponible.subject-badge { background: var(--s-disponible-col);color: var(--bg); }
 .status-disponible .subject-badge { background: var(--s-disponible-col);color: var(--bg); }
 .status-bloqueada .subject-badge { background: var(--bg-panel); color: var(--text-muted); }
@@ -518,6 +525,7 @@ body {
 .legend-hint   { font-size: 0.33rem; color: var(--text-muted); }
 .legend-aprobada  { color: var(--s-aprobada-col); }
 .legend-cursada   { color: var(--s-cursada-col); }
+.legend-cursando  { color: var(--col-white); }
 .legend-disponible{ color: var(--s-disponible-col); }
 .legend-bloqueada { color: var(--s-bloqueada-col); }
 
@@ -622,6 +630,13 @@ body {
   color: #FFD0A0;
 }
 .sbtn-cursada.is-active { box-shadow: 0 0 8px var(--s-cursada-col); }
+
+.sbtn-cursando {
+  background: #1A0030;
+  border-color: var(--col-white);
+  color: var(--col-white);
+}
+.sbtn-cursando.is-active { box-shadow: 0 0 8px var(--col-white); }
 
 .sbtn-ninguna {
   background: var(--bg);
