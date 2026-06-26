@@ -287,7 +287,7 @@ const STUDENTS = [
 
 // ── URL base de tu GitHub Pages ────────────────────────────────
 // Reemplazá TU_USUARIO y TU_REPO con los tuyos
-const BASE_URL = 'https://TU_USUARIO.github.io/TU_REPO';
+const BASE_URL = 'https://kron-opio.github.io/correlativ';
 
 // ══════════════════════════════════════════════════════════════
 // SEED
