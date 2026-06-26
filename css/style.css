@@ -3,7 +3,7 @@
    Paleta: Bandera Lésbica (2018)
    ===================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
 /* ── Variables ─────────────────────────────────────── */
 :root {
@@ -25,8 +25,8 @@
 
   /* Texto */
   --text:        #FFE8F2;   /* principal */
-  --text-soft:   #FFBBDD;   /* secundario */
-  --text-muted:  #C96FA8;   /* muted */
+  --text-soft:   #FFC9E4;   /* secundario */
+  --text-muted:  #E6A6CC;   /* muted — subido para contraste */
 
   /* Bordes */
   --border:      #FF9A56;   /* borde principal — durazno */
@@ -40,10 +40,12 @@
   --s-disponible-bg: #3D0026;
   --s-disponible-col:#D162A4;
   --s-bloqueada-bg:  #2A001A;
-  --s-bloqueada-col: #7A3060;
+  --s-bloqueada-col: #B06A93;   /* subido para contraste */
 
   --px: 4px;
-  --font: 'Press Start 2P', monospace;
+  --font-pixel: 'Press Start 2P', monospace;  /* títulos, chrome */
+  --font-read:  'VT323', monospace;           /* contenido legible */
+  --font: var(--font-pixel);                  /* compat */
 }
 
 /* ── Reset ─────────────────────────────────────────── */
@@ -70,11 +72,22 @@ body {
       rgba(255,154,86,0.025) 16px
     );
   color: var(--text);
-  font-family: var(--font);
-  font-size: 0.6rem;
-  line-height: 1.8;
+  font-family: var(--font-read);
+  font-size: 1.15rem;
+  line-height: 1.35;
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+/* ── Tipografía: chrome en pixel, contenido en VT323 ──
+   Todo hereda VT323 (legible) del body. Estos elementos
+   "de marco" (títulos, logo, badges, números) usan el
+   pixel font para mantener la estética retro. */
+.site-title, .site-name-small, .student-name,
+.year-header, .box-title, .semester-header, .subject-badge,
+.stat-num, .pixel-marquee, .progress-bar-label, .pixel-btn,
+.status-btn {
+  font-family: var(--font-pixel);
 }
 
 /* ── Scanlines ─────────────────────────────────────── */
@@ -194,8 +207,9 @@ body {
 
 /* ── Input ─────────────────────────────────────────── */
 .pixel-input {
-  font-family: var(--font);
-  font-size: 0.5rem;
+  font-family: var(--font-read);
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
   background: var(--bg-dark);
   color: var(--col-peach);
   border: var(--px) solid var(--border);
@@ -229,9 +243,9 @@ body {
 }
 
 .site-subtitle {
-  font-size: 0.45rem;
-  color: var(--text-muted);
-  margin-top: 6px;
+  font-size: 1rem;
+  color: var(--text-soft);
+  margin-top: 8px;
 }
 
 .main-content { display: flex; flex-direction: column; gap: 20px; }
@@ -241,12 +255,12 @@ body {
 .pixel-form { display: flex; flex-direction: column; gap: 14px; }
 
 .form-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-.form-row label { font-size: 0.5rem; color: var(--text-soft); min-width: 75px; }
+.form-row label { font-size: 1rem; color: var(--text-soft); min-width: 70px; }
 
 .instruction-text {
-  font-size: 0.45rem;
+  font-size: 1.05rem;
   color: var(--text-soft);
-  line-height: 2.2;
+  line-height: 1.45;
   margin-bottom: 14px;
 }
 
@@ -254,23 +268,23 @@ body {
 
 .error-msg {
   margin-top: 10px;
-  color: var(--col-dark-orange);
-  font-size: 0.45rem;
+  color: var(--col-peach);
+  font-size: 1rem;
   border: var(--px) solid var(--col-dark-orange);
   padding: 8px 10px;
   background: rgba(213,45,0,0.1);
 }
 
 .info-line {
-  font-size: 0.45rem;
+  font-size: 1.05rem;
   color: var(--text-soft);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .site-footer {
   text-align: center;
   padding: 20px 0;
-  font-size: 0.38rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
 }
 
@@ -305,9 +319,9 @@ body {
   line-height: 1.5;
 }
 .career-name {
-  font-size: 0.38rem;
-  color: var(--text-muted);
-  margin-top: 2px;
+  font-size: 0.92rem;
+  color: var(--text-soft);
+  margin-top: 3px;
 }
 
 .progress-section { margin-top: 4px; }
@@ -319,14 +333,41 @@ body {
   align-items: center;
   margin-bottom: 5px;
 }
-.stat { font-size: 0.38rem; color: var(--text-soft); }
-.stat-num { color: var(--col-peach); font-size: 0.52rem; }
-.stat-sep { color: var(--text-muted); font-size: 0.38rem; }
+.stat { font-size: 0.95rem; color: var(--text-soft); }
+.stat-num { color: var(--col-peach); font-size: 0.6rem; }
+.stat-sep { color: var(--text-muted); font-size: 0.9rem; }
 
 .progress-bar-label {
-  font-size: 0.38rem;
+  font-size: 0.42rem;
   color: var(--text-soft);
-  margin-bottom: 3px;
+  margin-bottom: 4px;
+}
+
+/* ── Promedio ──────────────────────────────────────── */
+.promedio-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 6px 0 7px;
+  padding: 5px 9px;
+  background: rgba(0,0,0,0.25);
+  border-left: var(--px) solid var(--col-peach);
+}
+.promedio-label {
+  font-family: var(--font-pixel);
+  font-size: 0.42rem;
+  color: var(--text-soft);
+  letter-spacing: 0.04em;
+}
+.promedio-num {
+  font-family: var(--font-pixel);
+  font-size: 0.7rem;
+  color: var(--col-peach);
+  text-shadow: var(--px) var(--px) 0 var(--col-dark-orange);
+}
+.promedio-meta {
+  font-size: 0.9rem;
+  color: var(--text-muted);
 }
 .progress-bar-track {
   height: 14px;
@@ -370,8 +411,8 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 180px;
-  font-size: 0.5rem;
-  color: var(--text-muted);
+  font-size: 1rem;
+  color: var(--text-soft);
 }
 
 /* ── Año Section ───────────────────────────────────── */
@@ -408,19 +449,19 @@ body {
 .semester-header {
   background: var(--bg-card);
   border-bottom: var(--px) solid var(--border);
-  padding: 7px 10px;
+  padding: 8px 10px;
   font-size: 0.45rem;
-  color: var(--text-soft);
+  color: var(--col-white);
   letter-spacing: 0.04em;
 }
 
 .semester-threshold {
-  font-size: 0.38rem;
-  color: var(--col-orange);
-  padding: 5px 10px;
+  font-size: 0.92rem;
+  color: var(--col-peach);
+  padding: 6px 10px;
   border-bottom: 2px dashed var(--bg-card);
-  background: rgba(0,0,0,0.2);
-  line-height: 1.8;
+  background: rgba(0,0,0,0.25);
+  line-height: 1.35;
 }
 
 .subjects-list {
@@ -475,9 +516,9 @@ body {
 .subject-card.status-bloqueada:hover { opacity: 1; }
 
 .subject-name {
-  font-size: 0.42rem;
-  line-height: 1.7;
-  margin-bottom: 4px;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  margin-bottom: 5px;
 }
 
 .subject-footer {
@@ -488,8 +529,8 @@ body {
 }
 
 .subject-badge {
-  font-size: 0.35rem;
-  padding: 2px 5px;
+  font-size: 0.38rem;
+  padding: 3px 5px;
   display: inline-block;
   letter-spacing: 0.04em;
 }
@@ -501,9 +542,15 @@ body {
 .status-bloqueada .subject-badge { background: var(--bg-panel); color: var(--text-muted); }
 
 .subject-hint {
-  font-size: 0.32rem;
+  font-size: 0.82rem;
   color: currentColor;
-  opacity: 0.6;
+  opacity: 0.7;
+}
+.subject-hint.subject-nota {
+  font-family: var(--font-pixel);
+  font-size: 0.5rem;
+  color: var(--col-peach);
+  opacity: 1;
 }
 
 /* ── Leyenda ───────────────────────────────────────── */
@@ -520,9 +567,9 @@ body {
   flex-wrap: wrap;
   z-index: 100;
 }
-.legend-item   { font-size: 0.37rem; color: var(--text-soft); }
-.legend-sep    { color: var(--text-muted); font-size: 0.37rem; }
-.legend-hint   { font-size: 0.33rem; color: var(--text-muted); }
+.legend-item   { font-size: 0.85rem; color: var(--text-soft); }
+.legend-sep    { color: var(--text-muted); font-size: 0.85rem; }
+.legend-hint   { font-size: 0.82rem; color: var(--text-muted); }
 .legend-aprobada  { color: var(--s-aprobada-col); }
 .legend-cursada   { color: var(--s-cursada-col); }
 .legend-cursando  { color: var(--col-white); }
@@ -556,12 +603,12 @@ body {
 
 /* Modal content */
 .modal-body {
-  font-size: 0.45rem;
-  line-height: 1.9;
+  font-size: 1.05rem;
+  line-height: 1.4;
 }
 .modal-section { margin-bottom: 14px; }
 .modal-label {
-  font-size: 0.38rem;
+  font-size: 0.92rem;
   color: var(--text-muted);
   margin-bottom: 6px;
   padding-bottom: 3px;
@@ -569,11 +616,11 @@ body {
 }
 
 .prereq-item {
-  font-size: 0.38rem;
-  padding: 4px 8px;
-  margin: 3px 0;
+  font-size: 0.95rem;
+  padding: 5px 8px;
+  margin: 4px 0;
   border-left: var(--px) solid;
-  line-height: 1.7;
+  line-height: 1.3;
 }
 .prereq-item.met {
   background: var(--s-aprobada-bg);
@@ -586,17 +633,18 @@ body {
   color: #FFD0A0;
 }
 .prereq-item.not-met {
-  background: rgba(213,45,0,0.12);
-  border-color: var(--col-dark-orange);
-  color: var(--col-dark-orange);
+  background: rgba(239,118,39,0.14);
+  border-color: var(--col-orange);
+  color: var(--col-peach);
 }
 .threshold-item {
-  font-size: 0.38rem;
-  padding: 5px 8px;
-  background: rgba(213,45,0,0.12);
-  border: var(--px) solid var(--col-dark-orange);
-  color: var(--col-dark-orange);
+  font-size: 0.95rem;
+  padding: 6px 8px;
+  background: rgba(239,118,39,0.15);
+  border: var(--px) solid var(--col-orange);
+  color: var(--col-peach);
   margin-bottom: 6px;
+  line-height: 1.3;
 }
 
 /* Status change buttons in modal */
@@ -605,14 +653,49 @@ body {
   gap: 7px;
   flex-wrap: wrap;
 }
+
+/* ── Nota final en el modal ────────────────────────── */
+.nota-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 10px;
+  background: var(--s-aprobada-bg);
+  border: var(--px) solid var(--s-aprobada-col);
+  flex-wrap: wrap;
+}
+.nota-label {
+  font-family: var(--font-pixel);
+  font-size: 0.42rem;
+  color: var(--col-peach);
+  letter-spacing: 0.03em;
+}
+.nota-input {
+  font-family: var(--font-pixel);
+  font-size: 0.6rem;
+  width: 80px;
+  text-align: center;
+  background: var(--bg-dark);
+  color: var(--col-peach);
+  border: var(--px) solid var(--col-peach);
+  padding: 8px 6px;
+  outline: none;
+}
+.nota-input:focus { border-color: var(--col-white); background: var(--bg); }
+/* Ocultar las flechitas del number input para que entren mejor */
+.nota-input::-webkit-outer-spin-button,
+.nota-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.nota-input { -moz-appearance: textfield; }
 .status-btn {
-  font-family: var(--font);
-  font-size: 0.38rem;
-  padding: 7px 10px;
+  font-family: var(--font-pixel);
+  font-size: 0.42rem;
+  padding: 8px 10px;
   border: var(--px) solid;
   cursor: pointer;
   letter-spacing: 0.03em;
   transition: transform 0.07s;
+  line-height: 1.5;
 }
 .status-btn:active { transform: translate(2px, 2px); }
 .status-btn.is-active { transform: translate(-2px, -2px); }
@@ -646,11 +729,12 @@ body {
 .sbtn-ninguna.is-active { box-shadow: 0 0 8px var(--text-muted); }
 
 .blocked-notice {
-  font-size: 0.38rem;
-  color: var(--col-dark-orange);
-  padding: 6px 8px;
-  border: var(--px) dashed var(--col-dark-orange);
-  background: rgba(213,45,0,0.08);
+  font-size: 0.95rem;
+  color: var(--col-peach);
+  padding: 7px 9px;
+  border: var(--px) dashed var(--col-orange);
+  background: rgba(239,118,39,0.1);
+  line-height: 1.35;
 }
 
 /* ── Toast ─────────────────────────────────────────── */
@@ -660,20 +744,147 @@ body {
   right: 12px;
   background: var(--col-orange);
   color: var(--bg);
+  font-family: var(--font-pixel);
   font-size: 0.45rem;
-  padding: 8px 12px;
+  padding: 9px 12px;
   border: var(--px) solid var(--col-peach);
   z-index: 300;
   animation: toast-in 0.25s ease-out;
   box-shadow: var(--px) var(--px) 0 var(--bg-dark);
 }
 
+/* ── Panel resumen (inscripción + próximas) ────────── */
+.overview {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: slide-in 0.25s ease-out;
+}
+
+.overview-box {
+  background: var(--bg-dark);
+  border: var(--px) solid var(--border);
+  box-shadow: var(--px) var(--px) 0 var(--bg-dark);
+}
+.overview-title {
+  font-family: var(--font-pixel);
+  font-size: 0.55rem;
+  background: var(--border);
+  color: var(--bg);
+  padding: 9px 12px;
+  letter-spacing: 0.04em;
+  border-bottom: var(--px) solid var(--border-alt);
+}
+.overview-empty {
+  padding: 12px 14px;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+/* Dos columnas de cuatrimestre */
+.overview-cuatris {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+}
+.cuatri-col { background: var(--bg-dark); padding: 10px 12px; }
+.cuatri-label {
+  font-family: var(--font-pixel);
+  font-size: 0.45rem;
+  color: var(--col-peach);
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px dashed var(--bg-card);
+  letter-spacing: 0.03em;
+}
+
+.avail-list, .next-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.avail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 9px;
+  font-size: 1rem;
+  line-height: 1.2;
+  cursor: pointer;
+  background: var(--s-disponible-bg);
+  border: var(--px) solid var(--s-disponible-col);
+  color: var(--col-pink);
+  transition: transform 0.08s;
+}
+.avail-item:hover { transform: translate(-2px, -2px); }
+.avail-meta {
+  font-family: var(--font-pixel);
+  font-size: 0.36rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.next-list { padding: 12px 14px; }
+.next-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 9px;
+  font-size: 1rem;
+  line-height: 1.2;
+  cursor: pointer;
+  background: var(--s-bloqueada-bg);
+  border: var(--px) solid var(--s-bloqueada-col);
+  color: var(--text-soft);
+  transition: transform 0.08s;
+}
+.next-item:hover { transform: translate(-2px, -2px); }
+.next-missing {
+  font-size: 0.85rem;
+  color: var(--col-peach);
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ── Año colapsable ────────────────────────────────── */
+.year-header { cursor: pointer; display: flex; align-items: center; gap: 8px; }
+.year-toggle {
+  margin-left: auto;
+  font-size: 0.55rem;
+  transition: transform 0.12s;
+}
+.year-done-tag {
+  font-size: 0.42rem;
+  color: var(--col-white);
+  opacity: 0.85;
+}
+.year-section.collapsed .semesters-grid { display: none; }
+.year-section.collapsed .year-toggle { transform: rotate(-90deg); }
+
 /* ── Utilidades ────────────────────────────────────── */
 .hidden { display: none !important; }
+
+/* ── Accesibilidad: respetar reduce-motion ─────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .blink, .progress-bar-fill::after { animation: none !important; opacity: 1; }
+}
 
 /* ── Responsive ────────────────────────────────────── */
 @media (max-width: 640px) {
   .semesters-grid { grid-template-columns: 1fr; }
+  .overview-cuatris { grid-template-columns: 1fr; }
 
   .site-title { font-size: 1.2rem; }
   .student-name { font-size: 0.55rem; }
