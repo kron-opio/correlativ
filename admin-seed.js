@@ -322,6 +322,7 @@ async function seed() {
         name:     s.name,
         careerId: s.careerId,
         progress: {},
+        notas:    {},
       });
 
       console.log('   ✓ ' + s.name);

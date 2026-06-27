@@ -8,6 +8,7 @@
   let studentData = null;
   let careerData  = null;
   let progress    = {};
+  let notas       = {};   // { [subjectId]: number } — campo propio en Firestore
   let saveTimer   = null;
 
   const STATUS_LABEL = {
@@ -41,6 +42,7 @@
     }
 
     progress = studentData.progress || {};
+    notas    = studentData.notas    || {};
 
     // Header
     document.getElementById('student-name').textContent =
@@ -420,17 +422,15 @@
 
   // ── Notas ──────────────────────────────────────────
   function getNota(id) {
-    const notas = progress[NOTAS_KEY] || {};
     const n = notas[id];
     return (typeof n === 'number' && !isNaN(n)) ? n : null;
   }
   function setNotaValue(id, n) {
-    if (!progress[NOTAS_KEY]) progress[NOTAS_KEY] = {};
-    if (n == null) delete progress[NOTAS_KEY][id];
-    else           progress[NOTAS_KEY][id] = n;
+    if (n == null) delete notas[id];
+    else           notas[id] = n;
   }
   function clearNota(id) {
-    if (progress[NOTAS_KEY]) delete progress[NOTAS_KEY][id];
+    delete notas[id];
   }
   function fmtNota(n) {
     return Number.isInteger(n) ? String(n) : String(n);
@@ -506,7 +506,7 @@
   // ── Stats ──────────────────────────────────────────
   function updateStats() {
     const thresholds = careerData.semesterThresholds || {};
-    const stats      = getProgressStats(progress, careerData.subjects, thresholds);
+    const stats      = getProgressStats(progress, careerData.subjects, thresholds, notas);
 
     document.getElementById('count-aprobadas').textContent  = stats.aprobadas;
     document.getElementById('count-cursando').textContent   = stats.cursando;
@@ -535,7 +535,7 @@
     saveTimer = setTimeout(async () => {
       const params    = new URLSearchParams(window.location.search);
       const studentId = params.get('s');
-      const ok        = await DATA.saveProgress(studentId, progress);
+      const ok        = await DATA.saveProgress(studentId, progress, notas);
       if (ok) showToast();
     }, 1200);
   }
