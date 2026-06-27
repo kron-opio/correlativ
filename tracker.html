@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CORRELATIV :: Seguimiento</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
   <div class="scanlines"></div>
@@ -32,6 +32,11 @@
         <span class="stat"><span class="stat-num" id="count-disponibles">0</span>&nbsp;disponibles</span>
         <span class="stat-sep">|</span>
         <span class="stat"><span class="stat-num" id="count-total">0</span>&nbsp;total</span>
+      </div>
+      <div class="promedio-row">
+        <span class="promedio-label">PROMEDIO</span>
+        <span class="promedio-num" id="promedio-num">—</span>
+        <span class="promedio-meta" id="promedio-meta">sin notas cargadas</span>
       </div>
       <div class="progress-bar-label">PROGRESO:&nbsp;<span id="progress-pct">0%</span></div>
       <div class="progress-bar-track">
@@ -76,9 +81,9 @@
 
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-  <script src="js/firebase-config.js?v=2"></script>
-  <script src="js/correlatividades.js?v=2"></script>
-  <script src="js/data.js?v=2"></script>
-  <script src="js/tracker.js?v=2"></script>
+  <script src="js/firebase-config.js?v=4"></script>
+  <script src="js/correlatividades.js?v=4"></script>
+  <script src="js/data.js?v=4"></script>
+  <script src="js/tracker.js?v=4"></script>
 </body>
 </html>
