@@ -14,16 +14,6 @@
  */
 
 /**
- * Clave reservada dentro de `progress` donde viven las notas finales.
- * Se guarda anidada en `progress` (no como campo aparte) porque las
- * Firestore Rules solo permiten actualizar el campo `progress`.
- * Forma: progress[NOTAS_KEY] = { [subjectId]: number }
- * El motor ignora esta clave: filtra estados por strings ('aprobada', …),
- * y un objeto/numero nunca matchea esos strings.
- */
-const NOTAS_KEY = '__notas__';
-
-/**
  * Calcula el estado de UNA materia.
  *
  * @param {string}   subjectId
@@ -116,8 +106,10 @@ function computeAllStatuses(progress, allSubjects, semesterThresholds) {
 
 /**
  * Estadísticas de progreso.
+ *
+ * @param {Object} notas — { [subjectId]: number } notas finales (campo aparte)
  */
-function getProgressStats(progress, allSubjects, semesterThresholds) {
+function getProgressStats(progress, allSubjects, semesterThresholds, notas) {
   const total     = allSubjects.length;
   const aprobadas = Object.values(progress).filter(v => v === 'aprobada').length;
   const cursadas  = Object.values(progress).filter(v => v === 'cursada').length;
@@ -128,10 +120,10 @@ function getProgressStats(progress, allSubjects, semesterThresholds) {
 
   // Promedio: media de las notas finales de las materias APROBADAS que
   // tengan nota cargada. Las cursadas/cursando no promedian.
-  const notas  = progress[NOTAS_KEY] || {};
+  const notasMap = notas || {};
   const graded = allSubjects
     .filter(s => progress[s.id] === 'aprobada')
-    .map(s => notas[s.id])
+    .map(s => notasMap[s.id])
     .filter(n => typeof n === 'number' && !isNaN(n));
   const promedio = graded.length
     ? graded.reduce((a, b) => a + b, 0) / graded.length
